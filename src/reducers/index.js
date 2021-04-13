@@ -1,5 +1,5 @@
 import {ADD_FAVOURITE}  from '../actions/index.js'
-import { ADD_MOVIE }  from '../actions/index.js'
+import { ADD_MOVIE , REMOVE_FAVOURITE }  from '../actions/index.js'
 
 
 const initialState = {
@@ -29,6 +29,12 @@ export function movie(state = initialState, action)
             return {
                 ...state,
             favourites: [action.movie , ...state.favourites] 
+            }
+        }
+        case REMOVE_FAVOURITE: {
+            return {
+                ...state,
+                favourites: [...state.favourites.filter(movie=> movie !== action.movie)]
             }
         }
         default: {
