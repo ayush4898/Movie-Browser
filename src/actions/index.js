@@ -1,9 +1,9 @@
 // action type
 export  const ADD_MOVIE = 'ADD_MOVIE';
-
-
 export const  ADD_FAVOURITE = 'ADD_FAVOURITE';
-export const  REMOVE_FAVOURITE = 'REMOVE_FAVOURITE';
+export const REMOVE_FAVOURITE = 'REMOVE_FAVOURITE';
+export const  SHOW_FAVOURITE_TAB = 'SHOW_FAVOURITE_TAB';
+
 // action creator
 
 export function addMovie(movies) {
@@ -27,5 +27,14 @@ export function removeFavourite(movie) {
     return ({
         type: REMOVE_FAVOURITE,
         movie : movie
+    });
+}
+
+
+export function showFavourite(value) {
+    // console.log('store dispatch called')
+    return ({
+        type: SHOW_FAVOURITE_TAB,
+        value
     });
 }

@@ -2,12 +2,16 @@ import { data } from '../data';
 import Navbar from './Navbar';
 import MovieCard from './moviecard';
 import React from 'react';
-import { addMovie } from '../actions/index'
+import { addMovie ,showFavourite } from '../actions/index'
 
 
 
 class App extends React.Component {
 
+ 
+  changeCurrentWindow = (value) => {
+    this.props.store.dispatch(showFavourite(value));
+  }
   componentDidMount()
   {
     const { store } = this.props;
@@ -20,6 +24,8 @@ class App extends React.Component {
     // console.log('UPDATED', store.getState());
 
   }
+
+  // to display the type of button  
   isFavourite = (movie) =>{
     const { favourites } = this.props.store.getState(); 
     console.log('is fav:', favourites);
@@ -30,27 +36,32 @@ class App extends React.Component {
     return false;
   }
 
-
   render() {
     // console.log('render');
-    const {list} = this.props.store.getState();
+    const {list , favourites ,showFavourite} = this.props.store.getState();
     console.log(this.props.store.getState());
+    const displayWindow = showFavourite ? favourites : list;
     return (<div className="App">
     <Navbar />
     <div className="main">
         <div className="tabs">
-          <div className='tab'>Movies</div>
-          <div className='tab'>Favourites</div>
+          <div className={`tab ${showFavourite ? null : 'active-tabs'}`}
+            onClick={() => { this.changeCurrentWindow(false) }}>Movies</div>
+          <div className={`tab ${showFavourite ? 'active-tabs' : null}`}
+            onClick={() => { this.changeCurrentWindow(true) }}>Favourites</div>
         </div>
+        
         <div className="list">
-          { list.map( (movie,index) => (
+          { displayWindow.length === 0 ? <div className="no-movies">No Movie to display</div> : null}
+           { displayWindow.map( (movie,index) => (
             <MovieCard movie={movie}
               key={`movie-${index}`}
               dispatch={this.props.store.dispatch}
               isFavourite = {this.isFavourite(movie)}
             />
-          ))
+           ))
           }
+          
         </div>
       </div>
   </div>
