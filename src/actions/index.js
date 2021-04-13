@@ -1,5 +1,5 @@
 // action type
-const  ADD_MOVIE = 'ADD_MOVIE'
+const ADD_MOVIE = 'ADD_MOVIE';
 export default ADD_MOVIE;
 
 // action creator

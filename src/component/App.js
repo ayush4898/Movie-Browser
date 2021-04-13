@@ -2,7 +2,6 @@ import { data } from '../data';
 import Navbar from './Navbar';
 import MovieCard from './moviecard';
 import React from 'react';
-
 import { addMovie } from '../actions/index'
 
 
@@ -11,16 +10,22 @@ class App extends React.Component {
 
   componentDidMount()
   {
-    // console.log('Compound did mount');
     const { store } = this.props;
-     store.dispatch(addMovie(data));
+    // console.log('Compound did mount');
+
+    // use subscribe above dispatch
+    store.subscribe(() => { this.forceUpdate(); });
+
+      store.dispatch(addMovie(data));
     // console.log('UPDATED', store.getState());
-    store.subscribe(this.render);
+
   }
 
 
   render() {
     // console.log('render');
+    const {list} = this.props.store.getState();
+    // console.log(movies);
     return (<div className="App">
     <Navbar />
     <div className="main">
@@ -29,7 +34,7 @@ class App extends React.Component {
           <div className='tab'>Favourites</div>
         </div>
         <div className="list">
-          { data.map( (movie,index) => (
+          { list.map( (movie,index) => (
             <MovieCard movie={movie} key={`movie-${index}`} />
           ))
           }
