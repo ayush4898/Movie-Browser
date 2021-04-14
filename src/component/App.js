@@ -5,13 +5,24 @@ import React from 'react';
 import { addMovie ,showFavourite } from '../actions/index'
 
 
+/* store
+ movies :{
+ list: [],
+ favourites : [],
+ showFavrites: bool
+ }
 
+ search:{
+ searchResult : []
+ }
+}
+*/
 class App extends React.Component {
 
- 
   changeCurrentWindow = (value) => {
     this.props.store.dispatch(showFavourite(value));
   }
+  
   componentDidMount()
   {
     const { store } = this.props;
@@ -26,8 +37,9 @@ class App extends React.Component {
   }
 
   // to display the type of button  
-  isFavourite = (movie) =>{
-    const { favourites } = this.props.store.getState(); 
+  isFavourite = (movie) => {
+    const {movies} = this.props.store.getState(); 
+    const { favourites } = movies;
     console.log('is fav:', favourites);
     if (favourites && favourites.indexOf(movie) !== -1)
     {
@@ -38,8 +50,9 @@ class App extends React.Component {
 
   render() {
     // console.log('render');
-    const {list , favourites ,showFavourite} = this.props.store.getState();
-    console.log(this.props.store.getState());
+    const { movies } = this.props.store.getState();
+    const {list , favourites ,showFavourite} = movies;  // {movie:{} search:{}}
+    console.log('RENDER',this.props.store.getState());
     const displayWindow = showFavourite ? favourites : list;
     return (<div className="App">
     <Navbar />
