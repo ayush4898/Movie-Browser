@@ -4,6 +4,7 @@
 // we update the state accordingly
 
 
+import { combineReducers } from 'redux'
 import { ADD_FAVOURITE } from '../actions/index.js'
 import { ADD_MOVIE , REMOVE_FAVOURITE,SHOW_FAVOURITE_TAB }  from '../actions/index.js'
 
@@ -75,19 +76,25 @@ export function search(state = initialSearchState, action)
 
 
 // creating rootReducer
-const initialRootState = {
-    movies: initialMovieState,
-    search : initialSearchState
-}
+// const initialRootState = {
+//     movies: initialMovieState,
+//     search : initialSearchState
+// }
 
-export default function rootReducer(state = initialRootState, action)
-{
-    // console.log('inside root reducer');
-    // console.log('inside root reducer state', state);
-    // console.log('inside root reducer action',action);
+// export default function rootReducer(state = initialRootState, action)
+// {
+//     // console.log('inside root reducer');
+//     // console.log('inside root reducer state', state);
+//     // console.log('inside root reducer action',action);
 
-    return {
-        movies: movies(state.movies,action),
-        search : search(state.search,action)
-    }
-}
+//     return {
+//         movies: movies(state.movies,action),
+//         search : search(state.search,action)
+//     }
+// }
+
+// predefined method to combine reducers 
+export default combineReducers({
+    movies: movies,
+    search: search
+});
