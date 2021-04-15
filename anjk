@@ -1,0 +1,59 @@
+[33mcommit 71fc3b10ef572f48894877ed6c77d18ce5b3751d[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: ayush goel <ayush4898@gmail.com>
+Date:   Thu Apr 15 12:00:02 2021 +0530
+
+    added first middleware i.e. logger
+
+[33mcommit f1353677a57417d1c4806279fd678c7366de5e7c[m
+Author: ayush goel <ayush4898@gmail.com>
+Date:   Wed Apr 14 12:29:42 2021 +0530
+
+    combining reducers using combineReducer()
+
+[33mcommit 3207c0987cf66df3167359e4bcfcb356fe43333c[m
+Author: ayush goel <ayush4898@gmail.com>
+Date:   Wed Apr 14 12:26:52 2021 +0530
+
+    Added Root reducer, search reducer
+
+[33mcommit fc524e06c6022a1443b6a6ba3fe44ab93f39a3bc[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: ayush goel <ayush4898@gmail.com>
+Date:   Tue Apr 13 23:32:51 2021 +0530
+
+    add fav via redux
+
+[33mcommit 505f90c0091e123d830e6d21591e4f222a6dbfc4[m
+Author: ayush goel <ayush4898@gmail.com>
+Date:   Tue Apr 13 22:32:25 2021 +0530
+
+    added favourite functionality
+
+[33mcommit c70820f328d6da52ce32659e3164c4fa5b083c78[m
+Author: ayush goel <ayush4898@gmail.com>
+Date:   Tue Apr 13 20:49:17 2021 +0530
+
+     added fav back
+
+[33mcommit eb32ac22665b5e35ee998e288b67d26a347df41c[m
+Author: ayush goel <ayush4898@gmail.com>
+Date:   Tue Apr 13 14:35:11 2021 +0530
+
+     changing state to add favourites
+
+[33mcommit 6d2795854febd2fefe2ae121427689a4adceae39[m
+Author: ayush goel <ayush4898@gmail.com>
+Date:   Tue Apr 13 13:52:00 2021 +0530
+
+    added redux (store)/dispatch/subscribe
+
+[33mcommit dd9bbb80679f89e2ef817fc1f3a19e24125baaf7[m
+Author: ayush goel <ayush4898@gmail.com>
+Date:   Mon Apr 12 22:26:39 2021 +0530
+
+    build basic UI of movie browser
+
+[33mcommit ae56ec4629714e5159f1692ff8a682f1ad2c3cc9[m
+Author: ayush goel <ayush4898@gmail.com>
+Date:   Mon Apr 12 20:21:04 2021 +0530
+
+    Initialize project using Create React App
