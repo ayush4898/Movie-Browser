@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -18,7 +18,25 @@ let logger = store => next => (action) => {
 
 const store = createStore(rootReducer,applyMiddleware(logger , thunk));
 // console.log('STORE', store);n
+
+export const StoreContext = createContext();
+
+class Provider extends React.Component{
+    render()
+    {
+        const { store } = this.props;
+        return <StoreContext.Provider value = {store}>
+          {this.props.children}
+        </StoreContext.Provider>
+    }
+}
+
+
+
 ReactDOM.render(
-    <App store={store}/>
+    <Provider store={store}>
+        <App store={store} />
+        {/* note the props store is not needed to pass without this itll work */}
+    </Provider>
 ,  document.getElementById('root')
 );

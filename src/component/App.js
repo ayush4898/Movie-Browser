@@ -1,8 +1,10 @@
 import { data } from '../data';
+import React from 'react';
+
+import { addMovie, showFavourite } from '../actions/index'
 import Navbar from './Navbar';
 import MovieCard from './moviecard';
-import React from 'react';
-import { addMovie ,showFavourite } from '../actions/index'
+import {StoreContext} from '../index'
 
 
 /* store
@@ -49,12 +51,16 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log('render');
+     // console.log('render');
+   
     const { movies ,search} = this.props.store.getState();
     const {list , favourites ,showFavourite} = movies;  // {movie:{} search:{}}
     console.log('RENDER',this.props.store.getState());
     const displayWindow = showFavourite ? favourites : list;
-    return (<div className="App">
+   
+    return (
+      
+      <div className="App">
       <Navbar dispatch={this.props.store.dispatch} search={search}/>
     <div className="main">
         <div className="tabs">
@@ -83,4 +89,15 @@ class App extends React.Component {
  }
 }
 
-export default App;
+class AppWrapper extends React.Component {
+  render() {
+    return <StoreContext.Consumer>
+        {
+        (store) => <App store={store} /> 
+        }
+      </StoreContext.Consumer>
+    
+  }
+}
+
+export default AppWrapper;
